@@ -1,11 +1,17 @@
 import uuid from "react-uuid";
 
-const GridSquare = ({ column, row, index, selectedColor }) => {
+const GridSquare = ({
+  column,
+  row,
+  index,
+  selectedColor,
+  gsSize,
+  showCoords,
+}) => {
   let currentColor = "red";
   let gridId = `${column}-${row}`;
-  let showCoords = true;
 
-  let gsSize = 1;
+  if (!gsSize) gsSize = 1;
   let selected = false;
   if (!selectedColor) selectedColor = currentColor;
   let inactiveColor = "white";
@@ -22,7 +28,7 @@ const GridSquare = ({ column, row, index, selectedColor }) => {
 
   return (
     <div id={gridId} className="gs" style={gsStyle} key={uuid()}>
-      <span>${showCoords ? `${gridId}` : "&nbsp;"}</span>
+      <span>{showCoords ? gridId : ""}</span>
     </div>
   );
 };

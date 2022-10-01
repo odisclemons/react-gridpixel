@@ -8,12 +8,13 @@ const GridContainer = () => {
     currentColor: "",
     inactiveColor: "white",
     mouseDown: null,
-    gridSquareSize: 5,
+    gsSize: 2,
     lockedColors: [],
     // gridDimensions: { x: 32, y: 18 }, //576 total squares
-    gridDimensions: { x: 20, y: 20 }, //576 total squares
+    gridDimensions: { x: 32, y: 20 }, //576 total squares
     plantData: [],
     gcStyle: {},
+    showCoords: false,
   });
 
   const drawGrid = (gridInfo) => {
@@ -25,12 +26,15 @@ const GridContainer = () => {
 
     var gridItems = [];
 
+    let gsSize = gc.gsSize;
+    let showCoords = gc.showCoords;
+
     // create a grid
     let { x, y } = gc.gridDimensions; //currentGridDimensions;
 
     let gcStyle = {
-      gridTemplateColumns: `1fr repeat(${x - 1}, ${gc.gridSquareSize}rem)`,
-      width: `${gc.gridSquareSize * x}rem`,
+      gridTemplateColumns: `1fr repeat(${x - 1}, ${gsSize}rem)`,
+      width: `${gsSize * x}rem`,
     };
 
     for (let i = 0; i < x * y; i++) {
@@ -46,14 +50,23 @@ const GridContainer = () => {
       let gi = gridInfo ? gridInfo[i] : null;
       //console.log("gi", gridInfo);
       let currentGi = !gridInfo ? (
-        <GS key={uuid()} column={column} row={row} index={i} />
+        <GS
+          key={uuid()}
+          column={column}
+          row={row}
+          index={i}
+          gsSize={gsSize}
+          showCoords={showCoords}
+        />
       ) : (
         <GS
           key={uuid()}
           column={column}
           row={row}
           index={i}
+          gsSize={gsSize}
           selectedColor={gi.selectedColor}
+          showCoords={showCoords}
         />
       );
 
