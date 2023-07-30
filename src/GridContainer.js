@@ -2,19 +2,9 @@ import { default as GS } from "./GridSquare";
 import { useEffect, useState } from "react";
 import uuid from "react-uuid";
 
-const GridContainer = () => {
+const GridContainer = (props) => {
   const [gc, setGC] = useState({
-    gridItems: [],
-    currentColor: "",
-    inactiveColor: "white",
-    mouseDown: null,
-    gsSize: 2,
-    lockedColors: [],
-    // gridDimensions: { x: 32, y: 18 }, //576 total squares
-    gridDimensions: { x: 32, y: 20 }, //576 total squares
-    plantData: [],
-    gcStyle: {},
-    showCoords: false,
+    ...props
   });
 
   const drawGrid = (gridInfo) => {
@@ -34,7 +24,7 @@ const GridContainer = () => {
 
     let gcStyle = {
       gridTemplateColumns: `1fr repeat(${x - 1}, ${gsSize}rem)`,
-      width: `${gsSize * x}rem`,
+      width: `${gsSize * x}rem`
     };
 
     for (let i = 0; i < x * y; i++) {
