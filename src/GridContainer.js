@@ -7,6 +7,10 @@ const GridContainer = (props) => {
     ...props
   });
 
+  useEffect(() => {
+    console.log("gsSize:", gc.gsSize);
+  }, []);
+
   const drawGrid = (gridInfo) => {
     if (gridInfo?.length < 1) gridInfo = null;
     //let currentGridDimensions = gc.gridDimensions;

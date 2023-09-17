@@ -3,16 +3,16 @@ import GridContainer from "./GridContainer";
 
 function App() {
   return (
-    <main>
+    <main style={{ background: "#333" }}>
       <GridContainer
         showCoords={true}
         gridItems={[]}
-        currentColor={""}
+        currentColor={"green"}
         inactiveColor={"white"}
         mouseDown={null}
-        gsSize={3}
+        gsSize={15}
         lockedColors={[]}
-        gridDimensions={{ x: 10, y: 10 }}
+        gridDimensions={{ x: 8, y: 4 }}
         plantData={[]}
         gcStyle={{}}
       ></GridContainer>
